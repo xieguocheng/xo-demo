@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+swagger:
+  enable: true
+
+spring:
+  redis:
+      host: 193.112.67.186
+      #password: redis
+      port: 6379
+      timeout: 3000
+      jedis:
+            pool:
+              max-idle: 8   # 连接池中的最大空闲连接
+              max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+              max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+              min-idle: 1   # 连接池中的最小空闲连接
+  datasource:
+    url: jdbc:mysql://localhost:3307/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: xgc666
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+
+logging:
+    level:
+      com.system.aop: debug
+
+# 自定义jwt key
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
