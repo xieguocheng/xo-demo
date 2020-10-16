@@ -4,7 +4,9 @@ import com.system.mbg.model.PmsBrand;
 import com.system.mbg.param.UmsAdminLoginParam;
 import com.system.mbg.model.UmsAdmin;
 import com.system.mbg.model.UmsPermission;
+import com.system.service.SmsService;
 import com.system.service.UmsAdminService;
+import com.system.utils.LoginUserUtil;
 import com.system.utils.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +33,15 @@ public class UmsAdminController {
 
     @Autowired
     private UmsAdminService adminService;
+    @Autowired
+    private SmsService smsService;
 
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
-    @ApiOperation(value = "用户注册")
+    @ApiOperation(value = "后台用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<UmsAdmin> register(@RequestBody UmsAdmin umsAdminParam, BindingResult result) {
@@ -47,13 +52,43 @@ public class UmsAdminController {
         return CommonResult.success("success",umsAdmin);
     }
 
-    @ApiOperation(value = "登录以后返回token")
+    @ApiOperation(value = "后台账号密码登录以后返回token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<?> login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
             return CommonResult.requestError("用户名或密码错误");
+        }
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("token", token);
+        tokenMap.put("tokenHead", tokenHead);
+        return CommonResult.success("success",tokenMap);
+    }
+
+    @ApiOperation("后台获取验证码")
+    @RequestMapping(value = "/getAuthCode", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult getAuthCode(@RequestParam String telephone) {
+        if(!LoginUserUtil.checkTelephone(telephone)){
+            return CommonResult.requestError("手机格式错误");
+        }
+        return smsService.generateAuthCode(telephone);
+    }
+
+    @ApiOperation(value = "后台手机号登录返回token")
+    @RequestMapping(value = "/loginByPhone", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<?> loginByPhone(@RequestParam String telephone, @RequestParam String authCode){
+        if(!LoginUserUtil.checkTelephone(telephone)){
+            return CommonResult.requestError("手机格式错误");
+        }
+        if(StringUtils.isEmpty(authCode)){
+            return CommonResult.requestError("验证码为空");
+        }
+        String token = adminService.loginByPhone(telephone,authCode);
+        if (token == null) {
+            return CommonResult.requestError("验证码错误");
         }
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);

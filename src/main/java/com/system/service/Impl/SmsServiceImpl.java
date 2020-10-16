@@ -44,6 +44,8 @@ public class SmsServiceImpl implements SmsService {
         String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone,RedisService.SMS_DB);
         boolean result = authCode.equals(realAuthCode);
         if (result) {
+            //TODO
+
             return CommonResult.success(null, "验证码校验成功");
         } else {
             return CommonResult.requestError("验证码不正确");

@@ -17,17 +17,32 @@ public interface UmsAdminService {
     UmsAdmin getAdminByUsername(String username);
 
     /**
+     * 根据手机号获取后台管理员
+     * @param phone
+     * @return
+     */
+    UmsAdmin getAdminByPhone(String phone);
+
+    /**
      * 注册功能
      */
     UmsAdmin register(UmsAdmin umsAdminParam);
 
     /**
-     * 登录功能
+     * 用户名密码登录功能
      * @param username 用户名
      * @param password 密码
      * @return 生成的JWT的token
      */
     String login(String username, String password);
+
+    /**
+     * 验证码登录
+     * @param telephone
+     * @param authCode
+     * @return
+     */
+    String loginByPhone(String telephone, String authCode);
 
     /**
      * 获取用户所有权限（包括角色权限和+-权限）

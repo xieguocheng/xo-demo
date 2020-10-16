@@ -1,8 +1,8 @@
 package com.system.utils;
 
-import com.taobao.api.internal.util.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.util.StringUtils;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;

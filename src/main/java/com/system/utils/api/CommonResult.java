@@ -8,6 +8,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author XO
+ * 数据返回对象
+ */
 @ApiModel
 @Data
 public class CommonResult<T> {

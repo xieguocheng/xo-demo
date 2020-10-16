@@ -57,4 +57,7 @@ public interface UmsAdminMapper {
 
 
 
+    List<UmsAdmin> selectByEmail(@Param("email")String email);
+
+
 }
