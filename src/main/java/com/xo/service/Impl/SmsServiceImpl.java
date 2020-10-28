@@ -1,7 +1,7 @@
-package com.xo.web.service.Impl;
+package com.xo.service.Impl;
 
-import com.xo.web.service.RedisService;
-import com.xo.web.service.SmsService;
+import com.xo.service.RedisService;
+import com.xo.service.SmsService;
 import com.xo.utils.api.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

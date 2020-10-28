@@ -1,4 +1,4 @@
-package com.xo.web.controller;
+package com.xo.controller;
 
 import com.xo.web.service.SmsService;
 import com.xo.utils.api.CommonResult;

@@ -1,7 +1,7 @@
-package com.xo.web.service.Impl;
+package com.xo.service.Impl;
 
 import com.alibaba.fastjson.JSON;
-import com.xo.web.service.RedisService;
+import com.xo.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

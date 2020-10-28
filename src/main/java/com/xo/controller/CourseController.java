@@ -1,4 +1,4 @@
-package com.xo.web.controller;
+package com.xo.controller;
 
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;

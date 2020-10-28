@@ -1,4 +1,4 @@
-package com.xo.web.controller;
+package com.xo.controller;
 
 import com.xo.mbg.param.UmsAdminLoginParam;
 import com.xo.mbg.model.UmsAdmin;
