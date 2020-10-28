@@ -1,7 +1,6 @@
 package com.xo.config;
 
 
-import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -26,7 +25,7 @@ import java.util.List;
  */
 @Configuration // 标记配置类
 @EnableSwagger2 // 开启在线接口文档
-@EnableSwaggerBootstrapUI
+//@EnableSwaggerBootstrapUI
 public class Swagger2Config {
     /**
      * 添加摘要信息(Docket)
@@ -55,7 +54,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包下controller生成API文档
-                .apis(RequestHandlerSelectors.basePackage("com.xo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.xo.web.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 //添加登录认证

@@ -1,4 +1,4 @@
-package com.xo.service;
+package com.xo.web.service;
 
 import com.xo.utils.api.CommonResult;
 

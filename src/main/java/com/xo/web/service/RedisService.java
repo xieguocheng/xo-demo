@@ -1,4 +1,4 @@
-package com.xo.service;
+package com.xo.web.service;
 
 public interface RedisService {
 

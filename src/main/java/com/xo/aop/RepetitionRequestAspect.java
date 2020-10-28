@@ -1,7 +1,7 @@
 package com.xo.aop;
 
 import com.xo.annotation.CannotRepetitionRequest;
-import com.xo.service.RedisService;
+import com.xo.web.service.RedisService;
 import com.xo.utils.IpUtils;
 import com.xo.utils.api.CommonResult;
 import org.aspectj.lang.ProceedingJoinPoint;

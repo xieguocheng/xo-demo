@@ -6,7 +6,7 @@ import com.xo.component.RestfulAccessDeniedHandler;
 import com.xo.mbg.dto.AdminUserDetails;
 import com.xo.mbg.model.UmsAdmin;
 import com.xo.mbg.model.UmsPermission;
-import com.xo.service.UmsAdminService;
+import com.xo.web.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

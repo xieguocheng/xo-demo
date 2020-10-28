@@ -1,6 +1,6 @@
-package com.xo.controller;
+package com.xo.web.controller;
 
-import com.xo.service.SmsService;
+import com.xo.web.service.SmsService;
 import com.xo.utils.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

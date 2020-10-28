@@ -1,6 +1,6 @@
-package com.xo.service.Impl;
+package com.xo.web.service.Impl;
 
-import com.xo.service.TestService;
+import com.xo.web.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
